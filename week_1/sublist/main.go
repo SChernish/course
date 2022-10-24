@@ -1,5 +1,7 @@
 package sublist
 
+import "reflect"
+
 // Relation is the comparison between lists
 type Relation string
 
@@ -30,7 +32,17 @@ func isEqual(l1, l2 []int) bool {
 	// написавши код - необхідно запустити тести
 	// Ці коментарі можна видаляти
 	// !ВАЖЛИВО - не забудьте виправити return
-	return false
+	if len(l1) != len(l2) {
+		return false
+	}
+
+	for index, value := range l1 {
+		if value != l2[index] {
+			return false
+		}
+	}
+
+	return true
 }
 
 func contains(l1, l2 []int) bool {
@@ -38,5 +50,15 @@ func contains(l1, l2 []int) bool {
 	// написавши код - необхідно запустити тести
 	// Ці коментарі можна видаляти
 	// !ВАЖЛИВО - не забудьте виправити return
+	if len(l1) < len(l2) {
+		return false
+	}
+
+	for i := 0; i < (len(l1) - len(l2) + 1); i++ {
+		if reflect.DeepEqual(l1[i:(len(l2)+i)], l2) {
+			return true
+		}
+	}
+
 	return false
 }
