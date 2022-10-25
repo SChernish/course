@@ -35,7 +35,7 @@ func Verse(i int) string {
 	var (
 		firstSentenceStr  = "On the "
 		secondSentenceStr = " day of Christmas my true love gave to me, "
-		str               = ""
+		sentenceSong      = ""
 	)
 
 	for j := 1; j <= i; j++ {
@@ -51,10 +51,10 @@ func Verse(i int) string {
 			}
 			return ", "
 		}
-		str = verse[wording[j]] + isDot(j) + isAnd(j) + str
+		sentenceSong = verse[wording[j]] + isDot(j) + isAnd(j) + sentenceSong
 	}
 
-	return firstSentenceStr + wording[i] + secondSentenceStr + str
+	return firstSentenceStr + wording[i] + secondSentenceStr + sentenceSong
 }
 
 func Song() string {
