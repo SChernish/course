@@ -47,14 +47,14 @@ func pingpong(str string, ch chan string, uid int) {
 
 func main() {
 
-	var chOne chan string = make(chan string)
+	var chFirst chan string = make(chan string)
 	var chSecond chan string = make(chan string)
 
-	go pingpong("START GAME", chOne, 1)
+	go pingpong("START GAME", chFirst, 1)
 
 	for {
-		go pingpong(<-chOne, chSecond, 2)
-		go pingpong(<-chSecond, chOne, 1)
+		go pingpong(<-chFirst, chSecond, 2)
+		go pingpong(<-chSecond, chFirst, 1)
 	}
 
 	fmt.Scanln()
