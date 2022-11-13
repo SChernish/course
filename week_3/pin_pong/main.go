@@ -39,7 +39,7 @@ func pingpong(str string, ch chan string, uid int) {
 	}
 
 	if str == "PONG" {
-		logging(uid, "PING", str, Zzleeping(1000000))
+		logging(uid, str, "PING", Zzleeping(1000000))
 		ch <- "PING"
 	}
 
