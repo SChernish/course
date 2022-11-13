@@ -33,13 +33,13 @@ func logging(uid int, got, sent string, timer fmt.Stringer) {
 
 func pingpong(str string, ch chan string, uid int) {
 
+	logging(uid, "PING", "PONG", Zzleeping(1000000))
+
 	if str == "PING" || str == "START GAME" {
-		logging(uid, str, "PONG", Zzleeping(1000000))
 		ch <- "PONG"
 	}
 
 	if str == "PONG" {
-		logging(uid, "PING", str, Zzleeping(1000000))
 		ch <- "PING"
 	}
 
