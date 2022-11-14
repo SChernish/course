@@ -56,7 +56,6 @@ func main() {
 		go pingpong(<-chFirst, chSecond, 2)
 		go pingpong(<-chSecond, chFirst, 1)
 	}
-
 	fmt.Scanln()
 
 }
