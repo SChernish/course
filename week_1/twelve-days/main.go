@@ -31,18 +31,38 @@ var wording = map[int]string{
 }
 
 func Verse(i int) string {
-	// Тут має бути рішення
-	// написавши код - необхідно запустити тести
-	// Ці коментарі можна видаляти
-	// !ВАЖЛИВО - не забудьте виправити return
-	return ""
+
+	var (
+		firstSentenceStr  = "On the "
+		secondSentenceStr = " day of Christmas my true love gave to me, "
+		sentenceSong      = ""
+	)
+
+	for j := 1; j <= i; j++ {
+		isAnd := func(x int) string {
+			if j == 2 {
+				return "and "
+			}
+			return ""
+		}
+		isDot := func(x int) string {
+			if j == 1 {
+				return ""
+			}
+			return ", "
+		}
+		sentenceSong = verse[wording[j]] + isDot(j) + isAnd(j) + sentenceSong
+	}
+
+	return firstSentenceStr + wording[i] + secondSentenceStr + sentenceSong
 }
 
 func Song() string {
 	var song = ""
-	// Тут має бути рішення
-	// написавши код - необхідно запустити тести
-	// Ці коментарі можна видаляти
-	// !ВАЖЛИВО - не забудьте виправити return
+
+	for i := 1; i <= len(wording); i++ {
+		song = song + Verse(i) + "\n"
+	}
+
 	return song
 }

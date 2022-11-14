@@ -6,10 +6,11 @@
 package leap
 
 // IsLeapYear повинен мати коментар documenting it.
-func IsLeapYear(int) bool {
+func IsLeapYear(year int) bool {
 	// Тут має бути рішення
 	// написавши код - необхідно запустити тести
 	// Ці коментарі можна видаляти
 	// !ВАЖЛИВО - не забудьте виправити return
-	return false
+
+	return (year%400 == 0 || year%4 == 0 && year%100 != 0)
 }

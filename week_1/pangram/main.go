@@ -1,10 +1,72 @@
 package pangram
 
-// IsPangram checks if given string is a pangram
+import (
+	"strings"
+)
+
+/* 2 Additional solutions
+1. Compare string as UTF
+2. Compare unicode
+3. Compare using packet string
+*/
+
+//Solution 1
+/*
 func IsPangram(s string) bool {
-	// Тут має бути рішення
-	// написавши код - необхідно запустити тести
-	// Ці коментарі можна видаляти
-	// !ВАЖЛИВО - не забудьте виправити return
-	return false
+	var (
+		alphabet    = []rune("abcdefghijklmnopqrstuvwxyz")
+		str         = strings.ToLower(string(s))
+		accumulator = 0
+	)
+	for i := 0; i < len([]rune(alphabet)); i++ {
+		for j := 0; j < len([]rune(str)); j++ {
+			if []rune(alphabet)[i] == []rune(str)[j] {
+				accumulator++
+				break
+			}
+		}
+	}
+	return (accumulator == len(alphabet))
+}
+*/
+
+// Solution 2
+/*
+func IsPangram(s string) bool {
+
+	var (
+		alphabet    = []rune("abcdefghijklmnopqrstuvwxyz")
+		str         = strings.ToLower(string(s))
+		accumulator = 0
+	)
+
+	for i := 0; i < len([]rune(alphabet)); i++ {
+		for j := 0; j < len([]rune(str)); j++ {
+			if []rune(alphabet)[i] == []rune(str)[j] {
+				accumulator++
+				break
+			}
+		}
+	}
+
+	return (accumulator == len(alphabet))
+}
+*/
+
+// Solution 3
+func IsPangram(s string) bool {
+	var (
+		alphabet  = []rune("abcdefghijklmnopqrstuvwxyz")
+		str       = strings.ToLower(string(s))
+		isPangram = true
+	)
+
+	for i := 0; i < len([]rune(alphabet)); i++ {
+		if !strings.ContainsRune(string(str), alphabet[i]) {
+			isPangram = false
+			break
+		}
+
+	}
+	return isPangram
 }
